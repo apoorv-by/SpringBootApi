@@ -21,9 +21,6 @@ public class Learners {
     @Column
     private String learner_password;
 
-    //@Column
-    //private int course_id;
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "course_id", referencedColumnName = "course_id")
     private Courses courses;
@@ -37,7 +34,6 @@ public class Learners {
         this.learner_last_name = learner_last_name;
         this.learner_email = learner_email;
         this.learner_password = learner_password;
-        //this.course_id = course_id;
     }
 
     public Learners(int learner_id, String learner_first_name, String learner_last_name, String learner_email, String learner_password, Courses courses) {
@@ -46,7 +42,6 @@ public class Learners {
         this.learner_last_name = learner_last_name;
         this.learner_email = learner_email;
         this.learner_password = learner_password;
-        //this.course_id = course_id;
         this.courses = courses;
     }
 
@@ -89,14 +84,6 @@ public class Learners {
     public void setLearner_password(String learner_password) {
         this.learner_password = learner_password;
     }
-
-    //public int getCourse_id() {
-        //return course_id;
-    //}
-
-    /*public void setCourse_id(int course_id) {
-        //this.course_id = course_id;
-    }*/
 
     public Courses getCourses() {
         return courses;

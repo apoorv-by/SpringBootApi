@@ -14,20 +14,20 @@ public class LearnersJdbcRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    // READING TABLE DATA (ROWS)
+    // READING TABLE DATA
     public List<Learners> getAllLearners(){
         String getAllLearnersQuery = "SELECT * FROM Learners";
         return jdbcTemplate.query(getAllLearnersQuery, new BeanPropertyRowMapper<>(Learners.class));
     }
 
-    // READ (GET BY learner ID)
+    // GET BY learner ID
     public Learners getLearnerById(int learner_id){
         String getLearnerQuery = "SELECT * FROM Learners WHERE learner_id = ?";
         return jdbcTemplate.queryForObject(getLearnerQuery,new BeanPropertyRowMapper<>(Learners.class),new Object[]{learner_id});
 
     }
 
-    // Create (insert)
+    // insert operation
     public int insertLearner(Learners learner){
         String insertLearnerQuery = "INSERT INTO Learners VALUES(?,?,?,?)";
 
@@ -40,7 +40,6 @@ public class LearnersJdbcRepository {
     }
 
     // Update a certain ROW (via Learners id)
-
     public int updateLearner(Learners learner){
         String updateQuery = "UPDATE Learners "+" SET learner_first_name = ?," +
                 " learner_last_name = ?, learner_email = ?, learner_password = ? " + " WHERE learner_id = ?";

@@ -5,7 +5,6 @@ import com.Spring.boot.api.SpringBootApi.Entity.Learners;
 import com.Spring.boot.api.SpringBootApi.repository.LearnersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -77,74 +76,25 @@ public class LearnersService {
     /* -----------------------------------------------------------------*/
 
 
-    /*@Transactional
-    public List<Learners> findByEmailAddressAndLastname(@PathVariable("email") String email, @PathVariable("last_name") String last_name)
+    @Transactional
+    public List<Learners> findByEmailAddressAndLastname(String learner_email, String learner_last_name)
     {
-        return  learnersRepository.findByLearner_emailAndLearner_last_name(email, last_name);
+        return  learnersRepository.findByLearner_emailAndLearner_last_name(learner_email, learner_last_name);
     }
 
-    @Transactional
-    public List<Learners> findDistinctLearnerByLastnameOrFirstname(String lastname, String firstname){
-        return learnersRepository.findDistinctByLearner_last_nameOrLearner_first_name(lastname, firstname);
-    }
-
-    @Transactional
-    public List<Learners> findByLastnameIgnoreCase(String lastname){
-        return learnersRepository.findByLearner_last_nameIgnoreCase(lastname);
-    }
-
-    @Transactional
-    public List<Learners> findByLastnameOrderByFirstnameAsc(String lastname){
-        return learnersRepository.findByLearner_last_nameOrderByLearners_first_nameAsc(lastname);
-    }*/
-/*
-
-    @Transactional
-    public List<Learners> findByEmailAddressAndLastname(@PathVariable("email") String email, @PathVariable("last_name") String last_name)
-    {
-        return  learnersRepository.findLearnersByLearner_emailAndLearner_last_name(email, last_name);
-    }
-
-    @Transactional
-    public List<Learners> findDistinctLearnerByLastnameOrFirstname(String lastname, String firstname){
-        return learnersRepository.findDistinctLearnersByLearner_last_nameOrLearner_first_name(lastname, firstname);
-    }
-
-    @Transactional
-    public List<Learners> findByLastnameIgnoreCase(String lastname){
-        return learnersRepository.findLearnersByLearner_last_nameIgnoreCase(lastname);
-    }
-
-    @Transactional
-    public List<Learners> findByLastnameOrderByFirstnameAsc(String lastname){
-        return learnersRepository.findLearnersByLearner_last_nameOrderByLearners_first_nameAsc(lastname);
-    }
-*/
-
-
-
-    @Transactional
-    public List<Learners> findByEmailAddressAndLastname(String learner_email, String learner_last_name){
-        return learnersRepository.findByEmailAddressAndLastname(learner_email, learner_last_name);
-    }
-
-    // 2
     @Transactional
     public List<Learners> findDistinctLearnerByLastnameOrFirstname(String learner_last_name, String learner_first_name){
-        return learnersRepository.findDistinctLearnerByLastnameOrFirstname(learner_last_name, learner_first_name);
+        return learnersRepository.findDistinctByLearner_last_nameOrLearner_first_name(learner_last_name, learner_first_name);
     }
 
-    // 3
     @Transactional
     public List<Learners> findByLastnameIgnoreCase(String learner_last_name){
-        return learnersRepository.findByLastnameIgnoreCase(learner_last_name);
+        return learnersRepository.findByLearner_last_nameIgnoreCase(learner_last_name);
     }
 
-    // 4
     @Transactional
     public List<Learners> findByLastnameOrderByFirstnameAsc(String learner_last_name){
-        return learnersRepository.findByLastnameOrderByFirstnameAsc(learner_last_name);
+        return learnersRepository.findByLearner_last_nameOrderByLearners_first_nameAsc(learner_last_name);
     }
-
 
 }

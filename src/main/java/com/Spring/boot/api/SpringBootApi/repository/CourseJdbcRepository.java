@@ -13,19 +13,19 @@ public class CourseJdbcRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    // READING TABLE DATA (ROWS)
+    // READING TABLE DATA
     public List<Courses> getAllCourses(){
         String getAllCoursesQuery = "SELECT * FROM Courses";
         return jdbcTemplate.query(getAllCoursesQuery, new BeanPropertyRowMapper<>(Courses.class));
     }
 
-    // READ (GET BY course ID)
+    // GET BY course ID
     public Courses getCourserById(int course_id){
         String getCourseQuery = "SELECT * FROM Courses WHERE course_id = ?";
         return jdbcTemplate.queryForObject(getCourseQuery,new BeanPropertyRowMapper<>(Courses.class),new Object[]{course_id});
     }
 
-    // Create (insert)
+    // insert operation
     public int insertCourse(Courses course){
         String insertCourseQuery = "INSERT INTO Courses VALUES(?,?,)";
         return jdbcTemplate.update(insertCourseQuery, new Object[]{

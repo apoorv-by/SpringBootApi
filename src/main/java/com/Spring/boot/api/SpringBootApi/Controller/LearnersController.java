@@ -21,9 +21,8 @@ public class LearnersController {
     @Autowired
     CoursesService coursesService;
 
-
-    // 1.save
-    @PostMapping
+    // 1. Save
+    @PostMapping("addLearner")
     public Learners addLearner(@RequestBody Learners learner){
         return learnersService.addLearners(learner);
     }
@@ -71,23 +70,23 @@ public class LearnersController {
     /*------------------------------------------------------------------------------------*/
 
     @RequestMapping("/findByEmailAddressAndLastname")
-    public List<Learners> findByEmailAddressAndLastname(@RequestBody Map<String,Object> fields){
-        return learnersService.findByEmailAddressAndLastname(fields.get("learner_email").toString(),fields.get("learner_last_name").toString());
+    public List<Learners> findByEmailAddressAndLastname(@RequestBody Map<String,String> data){
+        return learnersService.findByEmailAddressAndLastname(data.get("learner_email"),data.get("learner_last_name"));
     }
 
     @RequestMapping("/findDistinctLearnerByLastnameOrFirstname")
-    public List<Learners> findDistinctLearnerByLastnameOrFirstname(@RequestBody Map<String,Object> fields){
-        return learnersService.findDistinctLearnerByLastnameOrFirstname(fields.get("learner_last_name").toString(),fields.get("learner_first_name").toString());
+    public List<Learners> findDistinctLearnerByLastnameOrFirstname(@RequestBody Map<String,String> data){
+        return learnersService.findDistinctLearnerByLastnameOrFirstname(data.get("learner_last_name"),data.get("learner_first_name"));
     }
 
     @RequestMapping("/findByLastnameIgnoreCase")
-    public List<Learners> findByLastnameIgnoreCase(@RequestBody Map<String,Object> fields){
-        return learnersService.findByLastnameIgnoreCase(fields.get("learner_last_name").toString());
+    public List<Learners> findByLastnameIgnoreCase(@RequestBody Map<String,String> data){
+        return learnersService.findByLastnameIgnoreCase(data.get("learner_last_name"));
     }
 
     @RequestMapping("/findByLastnameOrderByFirstnameAsc")
-    public List<Learners> findByLastnameOrderByFirstnameAsc(@RequestBody Map<String,Object> fields){
-        return learnersService.findByLastnameOrderByFirstnameAsc(fields.get("learner_last_name").toString());
+    public List<Learners> findByLastnameOrderByFirstnameAsc(@RequestBody Map<String,String> data){
+        return learnersService.findByLastnameOrderByFirstnameAsc(data.get("learner_last_name"));
     }
 
 }
