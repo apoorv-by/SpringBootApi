@@ -97,6 +97,7 @@ public class LearnersService {
     public List<Learners> findByLastnameOrderByFirstnameAsc(String lastname){
         return learnersRepository.findByLearner_last_nameOrderByLearners_first_nameAsc(lastname);
     }*/
+/*
 
     @Transactional
     public List<Learners> findByEmailAddressAndLastname(@PathVariable("email") String email, @PathVariable("last_name") String last_name)
@@ -118,8 +119,9 @@ public class LearnersService {
     public List<Learners> findByLastnameOrderByFirstnameAsc(String lastname){
         return learnersRepository.findLearnersByLearner_last_nameOrderByLearners_first_nameAsc(lastname);
     }
+*/
 
-/*
+
 
     @Transactional
     public List<Learners> findByEmailAddressAndLastname(String learner_email, String learner_last_name){
@@ -143,7 +145,6 @@ public class LearnersService {
     public List<Learners> findByLastnameOrderByFirstnameAsc(String learner_last_name){
         return learnersRepository.findByLastnameOrderByFirstnameAsc(learner_last_name);
     }
-*/
 
 
 }

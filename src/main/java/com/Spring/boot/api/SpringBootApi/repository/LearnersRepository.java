@@ -3,6 +3,8 @@ package com.Spring.boot.api.SpringBootApi.repository;
 import com.Spring.boot.api.SpringBootApi.Entity.Learners;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -11,6 +13,7 @@ import java.util.List;
 public interface LearnersRepository extends JpaRepository<Learners, Integer> {
 
 
+/*
 
     @Modifying
     List<Learners> findLearnersByLearner_emailAndLearner_last_name(String email, String last_name);
@@ -23,8 +26,9 @@ public interface LearnersRepository extends JpaRepository<Learners, Integer> {
 
     @Modifying
     List<Learners> findLearnersByLearner_last_nameOrderByLearners_first_nameAsc(String lastname);
+*/
 
-    /*
+
     // 1.findByEmailAddressAndLastname
     @Modifying
     @Query("SELECT l " +
@@ -64,5 +68,5 @@ public interface LearnersRepository extends JpaRepository<Learners, Integer> {
             "FROM Learners l " +
             "WHERE l.learner_last_name = :learner_last_name " +
             "ORDER BY l.learner_first_name ASC")
-    List<Learners> findByLastnameOrderByFirstnameAsc(@Param("learner_last_name") String learner_last_name);*/
+    List<Learners> findByLastnameOrderByFirstnameAsc(@Param("learner_last_name") String learner_last_name);
 }
